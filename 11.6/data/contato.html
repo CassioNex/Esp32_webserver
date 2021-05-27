@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Contato</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+	</head>
+	
+	<body>
+	    <header id="mainheader"></header>
+		<p>&nbsp </p>
+
+    <div id="contaner">
+	<!-- -->
+		<p>&nbsp </p>
+		<p>Lemos e respondemos todas as perguntas dos nossos clientes. Queremos ouvir o que você tem a dizer!</p>
+		<p>&nbsp </p>
+		<ul class="contato">
+			<li>SAC: (89)8908-6786</li>
+			<li>whatsapp: (52)92828-2828</li>
+			<li>email: email@liame.com.br</li>
+			<li>Rua Machado de Assis (7,79 km)<br/>
+			09530310 São Caetano do Sul, SP</li>
+			<p><a href="/"><button class="button button4">Retornar ao menu</button></a></p>
+			<p><img src="inova">
+		</ul>
+	<!-- -->
+	</div>
+
+    <header id="mainfooter"></header>
+	
+	<script type="text/javascript"> 
+    carregaDocumento("/", "#mainheader");
+    carregaDocumento("rodape.html", "#mainfooter");
+
+    function carregaDocumento(arquivo, target)
+    {
+        var el = document.querySelector(target);
+
+        //Se o elemento não existir então não requisita
+        if (!el) return;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", arquivo, true);
+        xhr.onreadystatechange = function(){
+             if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300){
+                  el.innerHTML = xhr.responseText;
+             }
+        };
+
+        xhr.send(null);
+    }
+    </script>
+
+    
+	</body>
+</html>
+ 
+ 

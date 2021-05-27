@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meu sistema</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	 <header id="mainheader"></header>
+ 
+ <div id="contaner">
+ <p>&nbsp </p>
+ <p>&nbsp </p>
+ <!-- -->
+ <div>
+
+	<div>
+	%BUTTONPLACEHOLDER1%
+	%BUTTONPLACEHOLDER2%
+	%BUTTONPLACEHOLDER3%
+	%BUTTONPLACEHOLDER4%
+	%BUTTONPLACEHOLDER5%
+	</div>
+	 <h1>Controle de dados EEPROM:</h1>
+	 <div>
+	 <p>liga/desliga</p>
+		<p><a href="/LED01on"><button class="button button3">led</button></a>
+		<a href="/LED01off"><button class="button button3">led</button></a></p>
+	</div>
+	<div>
+		<p><a href="/LED02on"><button class="button button3">led2</button></a>
+		<a href="/LED02off"><button class="button button3">led2</button></a></p>
+	<div>
+	<div>
+		<p><a href="/LED03on"><button class="button button3">ledon</button></a>
+		<a href="/LED03off"><button class="button button3">ledon</button></a></p>
+	<div>
+		<div>
+		<p><a href="/LOG01on"><button class="button button3">Log in</button></a>
+		<a href="/LOG01off"><button class="button button3">Log in</button></a></p>
+	<div>
+	<div>
+		<h1>Habilitar/Desabilitar o envio de dados para o MQTT</h>
+		<p><a href="/MQTT01on"><button class="button button3">MQTT</button></a>
+		<a href="/MQTT01off"><button class="button button3">MQTT</button></a></p>
+        <p><a href="/"><button class="button button3">logout</button></a></p>
+ <!-- -->
+ </div>
+ 
+ <header id="mainfooter"></header>
+ 
+ <script type="text/javascript"> 
+    carregaDocumento("/", "#mainheader");
+    carregaDocumento("rodape.html", "#mainfooter");
+
+    function carregaDocumento(arquivo, target)
+    {
+        var el = document.querySelector(target);
+
+        //Se o elemento não existir então não requisita
+        if (!el) return;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", arquivo, true);
+        xhr.onreadystatechange = function(){
+             if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300){
+                  el.innerHTML = xhr.responseText;
+             }
+        };
+
+        xhr.send(null);
+    }
+    </script>
+    <script>
+        setInterval(function () {
+            // Call a function repetatively with 1 Second interval
+            getData();
+        }, 1000); //1000mSeconds update rate
+
+        function getData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("myId").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("GET", "/readMEM", true);
+            xhttp.send();
+        }
+    </script>
+	<!-- js botão -->
+	   <script>
+        function toggleCheckbox1(element) {
+            var xhr1 = new XMLHttpRequest();
+            if (element.checked) { xhr1.open("GET", "/update1?state1=1", true); }
+            else { xhr1.open("GET", "/update1?state1=1", true); }
+            xhr1.send();
+        }
+		
+		        function toggleCheckbox2(element) {
+            var xhr2 = new XMLHttpRequest();
+            if (element.checked) { xhr2.open("GET", "/update1?state2=1", true); }
+            else { xhr2.open("GET", "/update1?state2=0", true); }
+            xhr2.send();
+        }
+		
+		        function toggleCheckbox3(element) {
+            var xhr3 = new XMLHttpRequest();
+            if (element.checked) { xhr3.open("GET", "/update1?state3=1", true); }
+            else { xhr3.open("GET", "/update1?state3=0", true); }
+            xhr3.send();
+        }
+		
+		        function toggleCheckbox4(element) {
+            var xhr4 = new XMLHttpRequest();
+            if (element.checked) { xhr4.open("GET", "/update1?state4=1", true); }
+            else { xhr4.open("GET", "/update1?state4=0", true); }
+            xhr4.send();
+        }
+		
+		        function toggleCheckbox5(element) {
+            var xhr5 = new XMLHttpRequest();
+            if (element.checked) { xhr5.open("GET", "/update1?state5=1", true); }
+            else { xhr5.open("GET", "/update1?state5=0", true); }
+            xhr5.send();
+        }
+
+
+        setInterval(function () {
+            var xhttp1 = new XMLHttpRequest();
+            xhttp1.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var inputChecked1;
+                    var outputStateM1;
+
+                    if (this.responseText == 1) {
+                        inputChecked1 = true;
+                        outputStateM1 = "ON";
+                    }
+                    else {
+                        inputChecked1 = false;
+                        outputStateM1 = "OFF";
+                    }
+                    document.getElementById("output1").checked = inputChecked1;
+                    document.getElementById("outputState1").innerHTML = outputStateM1;
+                }
+            };
+            xhttp1.open("GET", "/state1", true);
+            xhttp1.send();
+			
+		        setInterval(function () {
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var inputChecked2;
+                    var outputStateM2;
+
+                    if (this.responseText == 1) {
+                        inputChecked2 = true;
+                        outputStateM2 = "ON";
+                    }
+                    else {
+                        inputChecked2 = false;
+                        outputStateM2 = "OFF";
+                    }
+                    document.getElementById("output2").checked = inputChecked2;
+                    document.getElementById("outputState2").innerHTML = outputStateM2;
+                }
+            };
+            xhttp2.open("GET", "/state2", true);
+            xhttp2.send();
+			
+			        setInterval(function () {
+            var xhttp3 = new XMLHttpRequest();
+            xhttp3.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var inputChecked3;
+                    var outputStateM3;
+
+                    if (this.responseText == 1) {
+                        inputChecked3 = true;
+                        outputStateM3 = "ON";
+                    }
+                    else {
+                        inputChecked3 = false;
+                        outputStateM3 = "OFF";
+                    }
+                    document.getElementById("output3").checked = inputChecked3;
+                    document.getElementById("outputState3").innerHTML = outputStateM3;
+                }
+            };
+            xhttp3.open("GET", "/state3", true);
+            xhttp3.send();
+			
+			        setInterval(function () {
+            var xhttp4 = new XMLHttpRequest();
+            xhttp4.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var inputChecked4;
+                    var outputStateM4;
+
+                    if (this.responseText == 1) {
+                        inputChecked4 = true;
+                        outputStateM4 = "ON";
+                    }
+                    else {
+                        inputChecked4 = false;
+                        outputStateM4 = "OFF";
+                    }
+                    document.getElementById("output4").checked = inputChecked4;
+                    document.getElementById("outputState4").innerHTML = outputStateM4;
+                }
+            };
+            xhttp4.open("GET", "/state4", true);
+            xhttp4.send();
+			
+			        setInterval(function () {
+            var xhttp5 = new XMLHttpRequest();
+            xhttp5.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var inputChecked5;
+                    var outputStateM5;
+
+                    if (this.responseText == 1) {
+                        inputChecked5 = true;
+                        outputStateM5 = "ON";
+                    }
+                    else {
+                        inputChecked5 = false;
+                        outputStateM5 = "OFF";
+                    }
+                    document.getElementById("output5").checked = inputChecked5;
+                    document.getElementById("outputState5").innerHTML = outputStateM5;
+                }
+            };
+            xhttp5.open("GET", "/state5", true);
+            xhttp5.send();
+
+
+        }, 1000);
+    </script>
+ 
+</body>
+</html>

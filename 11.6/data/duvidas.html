@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Duvidas</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+	 <header id="mainheader"></header>
+ 
+ <div id="contaner">
+ <p>&nbsp </p>
+ <p>&nbsp </p>
+ <!-- -->
+ 		<div class="duvidas">
+			<font size="15">PERGUNTAS FREQUENTES</font>
+			<p><strong>NÃO CONSIGO ACESSAR MEU SISTEMA.</strong></p>
+			<p>Você pode acessar a sua conta pelo link: <a href="/login">Pagina de Log in</a></p>
+			<p>Se tiver esquecido a sua senha, basta clicar em “esqueci a senha” que será enviado um e-mail com orientações.</br>
+			(não funcional ainda)</p>
+			<p>&nbsp;</p>
+			<p><strong>COMO POSSO ACOMPANHAR A ENTREGA DO MEU PEDIDO?</strong></p>
+			<p>Todos os pedidos são despachados em até x dias útil após a confirmação do pagamento.</p>
+			<p>*Enviamos para o seu e-mail cadastrado o código de rastreamento e informações sobre cada atualização do status de entrega do pedido. Caso você não receba estes e-mails, verifique em sua caixa de spam / lixo eletrônico.</p>
+			<p>&nbsp;</p>
+			<p><strong>PRECISO TROCAR O MEU PEDIDO. COMO FAZER?</strong></p>
+			<p>Você tem até 30 dias após o recebimento do pedido para fazê-la.</p>
+			<p>Envie-nos um e-mail para <a href="/contato">contato@email.com.br</a> &nbsp;com o assunto: TROCA, informando:</p>
+			<p>1) o número do seu pedido</p>
+			<p>2) o produto que você quer trocar</p>
+			<p>3) qual o motivo da troca.</p>
+			<p>Em até 3 dias úteis&nbsp;retornaremos o seu e-mail com mais informações sobre a troca. </p>
+			<p>Atenção: Lembramos que para realizar a troca o produto deverá estar com etiqueta afixada e não apresentar qualquer indício de violação, ou modificação;</p>
+			<p>&nbsp;</p>
+			<ul></ul>
+			<p><strong>QUAL É O PRAZO DE ENTREGA?</strong></p>
+			<p>O prazo de entrega irá variar de acordo o seu CEP e também de acordo com a forma de instalação e envio escolhida.</p>
+			<p>Na cidade de São Paulo e região tem-se em média um prazo de x dias úteis</p>
+			<p><strong></strong>&nbsp;</p>
+			<p><strong>ESTOU TENTANDO EFETUAR UMA COMPRA E O PAGAMENTO NÃO FOI AUTORIZADO.</strong></p>
+			<p>Normalmente quando o pagamento não é autorizado, isto ocorre por recusa da sua operadora de cartão de crédito. Recomendamos que você entre em contato com a sua operadora de cartão de crédito e solicite a aprovação da transação.</p>
+			<p>&nbsp;</p>
+			<p>&nbsp;</p>
+			<p><strong>TENHO UMA DÚVIDA, MAS NÃO ENCONTREI A RESPOSTA NESTA PÁGINA. O QUE FAÇO?</strong></p>
+			<p>Para outras dúvidas, informações, por favor, entre em contato&nbsp;pelo:&nbsp;</p>
+		</div>
+		<p><a href="/contato"><button class="button button5">contato</button></a></p>
+		<p><a href="/"><button class="button button4">Retornar ao menu</button></a></p>
+		<p><img src="inova">
+ <!-- -->
+ </div>
+ 
+ <header id="mainfooter"></header>
+ 
+ <script type="text/javascript"> 
+    carregaDocumento("/", "#mainheader");
+    carregaDocumento("rodape.html", "#mainfooter");
+
+    function carregaDocumento(arquivo, target)
+    {
+        var el = document.querySelector(target);
+
+        //Se o elemento não existir então não requisita
+        if (!el) return;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", arquivo, true);
+        xhr.onreadystatechange = function(){
+             if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300){
+                  el.innerHTML = xhr.responseText;
+             }
+        };
+
+        xhr.send(null);
+    }
+    </script>
+
+	</body>
+</html>
+ 

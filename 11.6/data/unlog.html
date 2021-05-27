@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pagina sem login</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		 <header id="mainheader"></header>
+ 
+ <div id="contaner">
+ <p>&nbsp </p>
+ <p>&nbsp </p>
+ <!-- -->
+ 		<p><a href="/"><button class="button button3">Retornar ao menu</button></a></p>
+ <!-- -->
+ </div>
+ 
+ <header id="mainfooter"></header>
+ 
+ <script type="text/javascript"> 
+    carregaDocumento("/", "#mainheader");
+    carregaDocumento("rodape.html", "#mainfooter");
+
+    function carregaDocumento(arquivo, target)
+    {
+        var el = document.querySelector(target);
+
+        //Se o elemento não existir então não requisita
+        if (!el) return;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", arquivo, true);
+        xhr.onreadystatechange = function(){
+             if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300){
+                  el.innerHTML = xhr.responseText;
+             }
+        };
+
+        xhr.send(null);
+    }
+    </script>
+
+	</body>
+</html>
+ 

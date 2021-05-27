@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header id="mainheader"></header>
+
+    <div id="contaner">
+        <p>&nbsp </p>
+        <p>&nbsp </p>
+        <!-- -->
+        <div class="login-page">
+            <div class="form">
+			<h1>Login<h1>
+                <form class="register-form">
+                    <p><input type='text' name="USERNAME" placeholder='user name' method="post"><input type= "submit" value= "Verificar" class="button button4" ><br></p>
+                 <!--   <p><input type= "submit" value= "Verificar" class="button button3" ></p>  -->
+                </form>
+				<p><a href="/senha"><button class="button button3">Continuar</button></a></p>
+                <p><a href="/"><button class="button button4">Retornar ao menu</button></a></p>
+                <font size="2"> Voce tambem pode entrar <a href='/unlog'>sem login</a></font> <br />
+                <font size="2"><a href='/index'>com login</a></font> <br />
+				<p><img src="inova">
+            </div>
+        </div>
+        <!-- -->
+    </div>
+
+    <header id="mainfooter"></header>
+
+    <script type="text/javascript">
+        carregaDocumento("/", "#mainheader");
+        carregaDocumento("rodape.html", "#mainfooter");
+
+        function carregaDocumento(arquivo, target) {
+            var el = document.querySelector(target);
+
+            //Se o elemento não existir então não requisita
+            if (!el) return;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", arquivo, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
+                    el.innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.send(null);
+        }
+    </script>
+
+</body>
+</html>
